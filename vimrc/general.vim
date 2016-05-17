@@ -4,7 +4,7 @@
 behave mswin                     " Set mouse behave to be Ms-Windows.
 if g:is_mac && has('gui_running')
 	source $VIMRUNTIME/macmap.vim  " Allow mappping with command-key.
-elseif s:is_win
+elseif s:is_mswin
   source $VIMRUNTIME/mswin.vim   " Allow using CTRL-X, CTRL-C and CTRL-V.
   if has('mouse')
     set mouse=a                  " Allow using mouse in all modes.

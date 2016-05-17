@@ -1,5 +1,5 @@
 ALL=bash vim tmux
-BACKUP=true
+BACKUP=false
 TIMESTAMP=$(shell date +%Y-%m-%d.%H:%M:%S)
 
 
@@ -10,17 +10,17 @@ tmux: ~/.tmux.conf
 bash: ~/.bash_profile
 
 ~/.%: %
-ifneq ("$(wildcard $@)", "")
-ifeq ($(BACKUP), true)
-	mv $@ $@.$(TIMESTAMP)
-else
-	rm $@
-endif
-endif
-ifneq ("$(wildcard $(shell pwd)/$*)", "")
-	ln -Fs $(shell pwd)/$* $@
-else
-	ln -Fs $(shell pwd)/$*/$* $@
-endif
+	if [[ -e $@ ]]; then \
+	 	if $(BACKUP); then \
+			mv $@ $@.$(TIMESTAMP); \
+		else \
+			rm $@; \
+		fi \
+	fi
+	if [[ -e $(shell pwd)/$*/$* ]]; then \
+		ln -Fs $(shell pwd)/$*/$* $@; \
+	else \
+		ln -Fs $(shell pwd)/$* $@; \
+	fi
 
 .PHONY: link vim tmux bash
