@@ -64,8 +64,10 @@ if has("linebreak")
   set linebreak
   " Every wrapped line will continue visually indented to preserve horizontal
   " blocks of text.
-  set breakindent
-  set breakindentopt=shift:4
+  if exists('&breakindent')
+    set breakindent
+    set breakindentopt=shift:4
+  endif
 endif
 
 se number nowrap
