@@ -1,2 +1,6 @@
 " Customized colour scheme.
-Plugin 'Porzire/freya'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'Porzire/freya'
+  finish
+endif

@@ -1,5 +1,9 @@
 " Remote tree explorer.
-Plugin 'netrw.vim'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'netrw.vim'
+  finish
+endif
 
 
 " behave like NERDTree.

@@ -1,5 +1,9 @@
 " Syntax highlight for Markdown text files.
-Plugin 'Markdown'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'Markdown'
+  finish
+endif
 
 
 autocmd BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn}  set filetype=mkd

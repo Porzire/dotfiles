@@ -19,34 +19,25 @@ endfunction
 
 set nocompatible
 
-" Load plugins and according settings.
-" TODO source the plugin line here and source the setting at the end of the
-"      vimrc to override the basic settings.
+" Load plugins.
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+let g:check_vundle_plugin = 1
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 call s:source('/vplugin/*.vim')
+unlet g:check_vundle_plugin
 call vundle#end() 
-filetype on
-filetype plugin on
-filetype indent on
 filetype plugin indent on
 
 " Set up general editor settings.
 call s:source('general.vim')
-
-" Set up utility related settings.
 call s:source('util.vim')
-
-" Set up UI related settings.
 call s:source('ui.vim')
-
-" Load shortcut mappings.
 call s:source('keymap.vim')
 
-" Load specific settings for different file types.
-call s:source('ftplugin/*.vim')
+" Reload plugin settings to override the basic settings.
+call s:source('/vplugin/*.vim')
 
 " Load commands.
 call s:source('command/*.vim')
@@ -54,4 +45,13 @@ call s:source('command/*.vim')
 " Load auto commands.
 if has('autocmd')
   call s:source('autocmd/*.vim')
+endif
+
+" Load specific settings for different file types.
+if has('autocmd')
+  " Note: The settings in 'ftplugin' should be defined for the local buffer
+  " using `setlocal`. One file may be assign filetype multiply times during
+  " loading. Therefore, we may want some settings be overrided in the final
+  " filetype.
+  autocmd! FileType * call s:source('ftplugin/' . &ft . '.vim')
 endif

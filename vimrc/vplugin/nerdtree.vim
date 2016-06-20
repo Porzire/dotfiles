@@ -1,5 +1,9 @@
 " A tree explorer for navigating the system.
-Plugin 'scrooloose/nerdtree'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'scrooloose/nerdtree'
+  finish
+endif
 
 
 map <c-o> :NERDTreeToggle<CR>

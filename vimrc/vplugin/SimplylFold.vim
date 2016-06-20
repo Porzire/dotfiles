@@ -1,4 +1,7 @@
-Plugin 'tmhedberg/SimpylFold'
+if exists('g:check_vundle_plugin')
+  Plugin 'tmhedberg/SimpylFold'
+  finish
+endif
 
 
 let g:SimpylFold_docstring_preview = 0

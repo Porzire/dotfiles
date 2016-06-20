@@ -1,5 +1,9 @@
 " Vim online documentation Chinese version.
-Plugin 'yianwillis/vimcdoc'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'yianwillis/vimcdoc'
+  finish
+endif
 
 
 " Language setings.

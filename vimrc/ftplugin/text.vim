@@ -1,1 +1,1 @@
-autocmd! FileType txt setlocal spell
+setl spell

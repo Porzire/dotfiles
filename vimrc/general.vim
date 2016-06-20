@@ -4,7 +4,7 @@
 behave mswin                     " Set mouse behave to be Ms-Windows.
 if g:is_mac && has('gui_running')
 	source $VIMRUNTIME/macmap.vim  " Allow mappping with command-key.
-elseif s:is_mswin
+elseif g:is_mswin
   source $VIMRUNTIME/mswin.vim   " Allow using CTRL-X, CTRL-C and CTRL-V.
   if has('mouse')
     set mouse=a                  " Allow using mouse in all modes.
@@ -31,6 +31,10 @@ if exists("&autoread")
 	set autoread
 endif
 
+" Disable error beep and flash
+set noerrorbells
+set visualbell t_vb=
+
 
 """"""""""""""""""""""""""""""""""" Encoding """""""""""""""""""""""""""""""""""
 
@@ -47,6 +51,14 @@ endif
 
 " Set fonts.
 if has('gui_running')
-  set guifont=Inconsolata\ for\ Powerline:h12,Menlo:h12
-  "set gfw=Yahei\ Mono:h12
+  if g:is_mac
+    set guifont=Inconsolata\ for\ Powerline:h12,Inconsolata:h12
+  else
+    set guifont=Inconsolata\ for\ Powerline\ 10,Inconsolata\ 10
+  endif
 endif
+
+
+"""""""""""""""""""""""""""""""""" Preference """"""""""""""""""""""""""""""""""
+
+let g:tex_flavor = "latex"

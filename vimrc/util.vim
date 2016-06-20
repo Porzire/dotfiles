@@ -20,8 +20,8 @@ if has("folding")
     set fillchars=fold:\	        " Use space to fill the folding line.
   endif
 
-  set foldtext=FoldText()
-  function! FoldText()
+  set foldtext=FoldText(0)
+  function! FoldText(hide_end_line)
     """ Return folding information, which is defined as the concatenation of
     """ three components: content short cut, padding, and folded line count.
     """
@@ -35,7 +35,7 @@ if has("folding")
     " Compute content shortcut (ft_sc)
     let l:start = getline(v:foldstart)
     let l:end = getline(v:foldend)
-    if match(l:end, 'end') >= 0 || &filetype == 'python'
+    if match(l:end, 'end') >= 0 || a:hide_end_line
       let l:ft_sc = l:start
     else
       let l:ft_sc = l:start . ' ... ' . strpart(l:end, match(l:end, '\S'))

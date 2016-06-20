@@ -1,2 +1,6 @@
 " Support editor config.
-Plugin 'editorconfig/editorconfig-vim'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'editorconfig/editorconfig-vim'
+  finish
+endif

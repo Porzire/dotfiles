@@ -1,5 +1,9 @@
 " Hive syntax.
-Plugin 'autowitch/hive.vim'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'autowitch/hive.vim'
+  finish
+endif
 
 
 au BufNewFile,BufRead *.hql set filetype=hive expandtab

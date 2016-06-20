@@ -26,9 +26,10 @@ function! RunProgram()
     else
       exec "! ./%<"
     endif
-  elseif &filetype == ('cpp' | 'sh')
+  elseif (&filetype == 'cpp' || &filetype == 'sh')
     exec "! ./%<"
-	elseif &filetype == ('html' | 'xhtml')
+    echom 'filetype is cpp/sh'
+	elseif (&filetype == 'html' || &filetype == 'xhtml')
     exec "!open %"
   elseif &filetype == 'java'
     exec "!java %<"
@@ -43,14 +44,14 @@ function! RunProgram()
 	elseif &filetype == 'perl'
     exec "!perl %"
 	elseif &filetype == 'tex'
-    if g:is_win
+    if g:is_mswin
       call Tex_ViewLaTeX()
-    elseif s:is_mac
+    elseif g:is_mac
       exec "!open %<\.pdf"
     else
       exec "!okular %<\.pdf"
     endif
-	elseif &filetype == ('mmd' || 'mkd' || 'markdown')
+	elseif (&filetype == 'mmd' || &filetype == 'mkd' || &filetype == 'markdown')
     if g:is_mswin
       exec "!chrome \"%\""
     else

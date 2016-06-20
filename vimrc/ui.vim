@@ -36,7 +36,7 @@ if has("syntax")
   syntax enable        " Enable syntax highlighting.
   set synmaxcol=10000  " Maximum column in which to search for syntax items.
 
-  set colorcolumn=+1   " The screen column that is being highlighted.
+  "set colorcolumn=+1   " The screen column that is being highlighted.
 
   set cursorline       " Highlight the screen line of the cursor.
   set nocursorcolumn   " Not highlight the screen column of the cursor.

@@ -1,5 +1,9 @@
 " Source code browser.
-Plugin 'majutsushi/tagbar'
+
+if exists('g:check_vundle_plugin')
+  Plugin 'majutsushi/tagbar'
+  finish
+endif
 
 
 map <c-p> :TagbarToggle<CR>
