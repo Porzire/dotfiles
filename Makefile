@@ -1,25 +1,26 @@
 ALL=bash vim tmux
 BACKUP=false
 TIMESTAMP=$(shell date +%Y-%m-%d.%H:%M:%S)
+PREFIX=$(HOME)
 
 
 link: $(ALL)
 
-vim: ~/.vimrc ~/.editorconfig ~/.config/powerline
-	@if test -d ~/.vim/after/.vimrc-after; then \
-		echo "~/.vim/after/.vimrc-after <- $(shell pwd)/vimrc/after.vim"; \
-		mkdir -p ~/.vim/after; \
-		ln -s $(shell pwd)/vimrc/after.vim ~/.vim/after/.vimrc-after; \
+vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline
+	@if test -d $(PREFIX)/.vim/after/.vimrc-after; then \
+		echo "$(PREFIX)/.vim/after/.vimrc-after <- $(shell pwd)/vimrc/after.vim"; \
+		mkdir -p $(PREFIX)/.vim/after; \
+		ln -s $(shell pwd)/vimrc/after.vim $(PREFIX)/.vim/after/.vimrc-after; \
 	fi
-tmux: ~/.tmux.conf
-bash: ~/.bash_profile
+tmux: $(PREFIX)/.tmux.conf
+bash: $(PREFIX)/.bash_profile
 
-~/.config/%: config/%
+$(PREFIX)/.config/%: config/%
 	@echo "$@ <- $(shell pwd)/$<"
-	@mkdir -p ~/.config
+	@mkdir -p $(PREFIX)/.config
 	@ln -Fs $(shell pwd)/$< $@
 
-~/.%: %
+$(PREFIX)/.%: %
 	@echo "$@ <- $(shell pwd)/$<"
 	@if test -e $@ && $(BACKUP); then \
 		mv $@ $@.$(TIMESTAMP); \
