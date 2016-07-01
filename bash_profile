@@ -10,6 +10,9 @@ export PYTHONPATH
 
 PATH="/usr/local/bin:${PATH}"
 
+# Add home bine
+PATH="${HOME}/bin:${PATH}"
+
 # Add dropbox path
 PATH="~/Dropbox/bin:${PATH}"
 
@@ -32,3 +35,7 @@ PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 PATH="/usr/local/sbin:$PATH"
 
 export PATH
+
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc
+fi
