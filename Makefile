@@ -12,6 +12,11 @@ vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline
 		mkdir -p $(PREFIX)/.vim/after; \
 		ln -s $(shell pwd)/vimrc/after.vim $(PREFIX)/.vim/after/.vimrc-after; \
 	fi
+	@if ! test -d $(PREFIX)/.vim/bundle/Vundle.vim; then \
+		git clone https://github.com/VundleVim/Vundle.vim.git $(PREFIX)/.vim/bundle/Vundle.vim; \
+		vim +silent +PluginInstall +qall; \
+	fi
+
 tmux: $(PREFIX)/.tmux.conf
 bash: $(PREFIX)/.bash_profile
 
