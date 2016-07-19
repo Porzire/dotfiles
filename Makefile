@@ -19,6 +19,18 @@ vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline
 
 tmux: $(PREFIX)/.tmux.conf
 bash: $(PREFIX)/.bash_profile
+brew:
+	@if ! type 'brew' > /dev/null; then \
+		if type 'ruby' > /dev/null; then \
+			if [ "$(uname)" == 'Linux' ]; then \
+				ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"; \
+			elif [ `unmae` == 'Darwin' ]; then \
+				ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; \
+			fi \
+		else \
+			echo "ruby is not installed."; \
+		fi \
+	fi
 
 $(PREFIX)/.config/%: config/%
 	@echo "$@ <- $(shell pwd)/$<"
@@ -28,7 +40,7 @@ $(PREFIX)/.config/%: config/%
 # Link ./<dotfile> to $(PREFIX)/.<dotfile>. If ./<dotfile> is expended to be a
 # folder, link ./<dotfile>/<dotfile> instead.
 $(PREFIX)/.%: %
-	@if [ ! $(shell readlink $@) == $(shell pwd)/$*/$* ]; then \
+	@if [ "$(shell readlink $@)" != "$(shell pwd)/$*/$*" ]; then \
 		if [ -e $@ ] && $(BACKUP); then \
 			mv $@ $@.$(TIMESTAMP); \
 		else \
@@ -38,7 +50,7 @@ $(PREFIX)/.%: %
 			echo "$@ <- $(shell pwd)/$*/$*"; \
 			ln -s $(shell pwd)/$*/$* $@; \
 		else \
-			echo "$@ <- $(shell pwd)/$<" \
+			echo "$@ <- $(shell pwd)/$<"; \
 			ln -s $(shell pwd)/$* $@; \
 		fi \
 	fi
