@@ -33,7 +33,8 @@ endif
 
 " Disable error beep and flash
 set noerrorbells
-set visualbell t_vb=
+set visualbell
+set t_vb=
 
 
 """"""""""""""""""""""""""""""""""" Encoding """""""""""""""""""""""""""""""""""
