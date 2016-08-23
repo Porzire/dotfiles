@@ -2,10 +2,6 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-if [ -f ~/.bash_local ]; then
-  source ~/.bash_local
-fi
-
 # Color the terminal print.
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -42,3 +38,9 @@ if [ "$(uname)" == 'Linux' ]; then
 fi
 export PATH
 export PYTHONPATH
+
+if [ -f ~/.bash_local ]; then
+  source ~/.bash_local
+fi
+
+# vim: ft=sh
