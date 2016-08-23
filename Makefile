@@ -1,12 +1,16 @@
-ALL=bash vim tmux
 BACKUP=false
 TIMESTAMP=$(shell date +%Y-%m-%d.%H:%M:%S)
 PREFIX=$(HOME)
+MAKE=make -s
 
 
+ALL=bash vim tmux
 link: $(ALL)
 
-vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline
+vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREFIX)/.gvimrc
+	@if type 'gvim' > /dev/null; then \
+		$(MAKE) $(PREFIX)/.gvimrc; \
+	fi
 	@if [ ! -e $(PREFIX)/.vim/after/.vimrc-after ]; then \
 		echo "$(PREFIX)/.vim/after/.vimrc-after <- $(shell pwd)/vimrc/after.vim"; \
 		mkdir -p $(PREFIX)/.vim/after; \
@@ -32,6 +36,7 @@ brew:
 		fi \
 	fi
 
+# Link config files.
 $(PREFIX)/.config/%: config/%
 	@echo "$@ <- $(shell pwd)/$<"
 	@mkdir -p $(PREFIX)/.config

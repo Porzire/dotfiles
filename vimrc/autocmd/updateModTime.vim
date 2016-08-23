@@ -23,8 +23,8 @@ augroup updateModTime
     """            this parameter is not given, the date information will be
     """            placed after the line pattern.
     """ 
-    if line("$") > 20
-      let l:l = 20
+    if line("$") > 40
+      let l:l = 40
     else
       let l:l = line("$")
     endif

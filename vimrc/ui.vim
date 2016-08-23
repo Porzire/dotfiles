@@ -26,7 +26,11 @@ if has('statusline')
 	set rulerformat=%17(:b%n\ \ %l,%c%V\ %=%P%)  " ruler string.
 endif
 
-colorscheme freya
+try
+  colorscheme freya
+catch
+  set background=dark
+endtry
 
 """""""""""""""""""""""""""""""""""" Buffer """"""""""""""""""""""""""""""""""""
 
