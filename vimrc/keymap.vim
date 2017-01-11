@@ -47,7 +47,7 @@ function! RunProgram()
     if g:is_mswin
       call Tex_ViewLaTeX()
     elseif g:is_mac
-      exec "!open %<\.pdf"
+      exec "!open -a /Applications/Skim.app %<\.pdf"
     else
       exec "!okular %<\.pdf"
     endif

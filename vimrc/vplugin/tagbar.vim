@@ -17,8 +17,7 @@ let g:tagbar_iconchars = ['▸', '▾']
 " it can be highlighted.
 let g:tagbar_autoshowtag = 1
 
-" omitting the short help at the top of the window and the blank lines in
-" between top-level scopes in order to save screen real estate.
-let g:tagbar_compact = 1
+" Sort tags according to their order in the source file.
+let g:tagbar_sort = 0
 
 highlight default link TagbarKind Comment

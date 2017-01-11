@@ -34,8 +34,7 @@ endif
 
 " Disable error beep and flash
 set noerrorbells
-set visualbell
-set t_vb=
+set visualbell  " avoid error bell when click ESC in normal mode.
 
 
 """"""""""""""""""""""""""""""""""" Encoding """""""""""""""""""""""""""""""""""

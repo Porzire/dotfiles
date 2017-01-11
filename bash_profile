@@ -13,15 +13,10 @@ if [ -d ~/torch ]; then
   fi
 fi
 
-# Setup the local environment. Used for a shared machine.
-if [ -d ~/.local ]; then
-  PATH="$HOME/.local/bin:$HOME/.local/usr/bin:$PATH"
-  LIBRARY_PATH="$HOME/.local/lib:$HOME/.local/usr/lib:$LIBRARY_PATH"
-fi
-
 if [ -d ~/.linuxbrew ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
+  LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
   MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
@@ -33,6 +28,7 @@ fi
 
 if [ "$(uname)" == 'Linux' ]; then
   export LIBRARY_PATH
+  export LD_LIBRARY_PATH
   export MANPATH
   export INFOPATH
 fi

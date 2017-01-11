@@ -7,10 +7,7 @@ MAKE=make -s
 ALL=bash vim tmux
 link: $(ALL)
 
-vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREFIX)/.gvimrc
-	@if type 'gvim' > /dev/null; then \
-		$(MAKE) $(PREFIX)/.gvimrc; \
-	fi
+vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREFIX)/.config/vimwiki
 	@if [ ! -e $(PREFIX)/.vim/after/.vimrc-after ]; then \
 		echo "$(PREFIX)/.vim/after/.vimrc-after <- $(shell pwd)/vimrc/after.vim"; \
 		mkdir -p $(PREFIX)/.vim/after; \

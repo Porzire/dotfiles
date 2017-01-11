@@ -1,3 +1,5 @@
 setl wrap
 setl tw=0
-setl concealcursor = ""
+if has('conceal')
+  setl concealcursor = ""
+endif
