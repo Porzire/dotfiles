@@ -21,9 +21,8 @@ if [ -d ~/.linuxbrew ]; then
   INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
 
-if [ -d ~/.virtualenv ]; then
-  PATH="$HOME/.virtualenv/bin:$HOME/.linuxbrew/sbin:$PATH"
-  PYTHONPATH="$HOME/.virtualenv/lib/python2.7/site-packages:$PYTHONPATH"
+if [ -d ~/miniconda3 ]; then
+  PATH="$HOME/miniconda3/bin:$PATH"
 fi
 
 if [ "$(uname)" == 'Linux' ]; then
