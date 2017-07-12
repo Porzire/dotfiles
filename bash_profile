@@ -6,13 +6,6 @@ fi
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-if [ -d ~/torch ]; then
-  if ! type 'th' > /dev/null; then
-    # Auto-activate torch
-    . ~/torch/install/bin/torch-activate
-  fi
-fi
-
 if [ -d ~/.linuxbrew ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
