@@ -16,7 +16,6 @@ fi
 if [ -d ~/.linuxbrew ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
-  LD_LIBRARY_PATH="$HOME/.linuxbrew/lib:$LD_LIBRARY_PATH"
   MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
