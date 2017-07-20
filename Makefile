@@ -3,9 +3,13 @@ TIMESTAMP=$(shell date +%Y-%m-%d.%H:%M:%S)
 PREFIX=$(HOME)
 MAKE=make -s
 
+ALL=bash vim tmux pypi
 
-ALL=bash vim tmux
+
 link: $(ALL)
+
+pypi: $(PREFIX)/.pypirc
+	chmod 600 $<
 
 vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREFIX)/.config/vimwiki $(PREFIX)/.config/vim-codefmt
 	@if [ ! -e $(PREFIX)/.vim/after/.vimrc-after ]; then \
@@ -19,7 +23,9 @@ vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREF
 	fi
 
 tmux: $(PREFIX)/.tmux.conf
+
 bash: $(PREFIX)/.bash_profile
+
 brew:
 	@if ! type 'brew' > /dev/null; then \
 		if type 'ruby' > /dev/null; then \

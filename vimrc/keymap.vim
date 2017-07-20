@@ -18,7 +18,7 @@ vnoremap // y/<C-R>"<CR>
 xnoremap p pgvy
 
 " Run program.
-map <d-0> :call RunProgram()<CR>
+map <leader>r :call RunProgram()<CR>
 function! RunProgram()
   if &filetype == 'c'
     if g:is_mswin
