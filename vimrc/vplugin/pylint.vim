@@ -5,5 +5,8 @@ if exists('g:check_vundle_plugin')
   finish
 endif
 
-au FileType python set makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
-au FileType python set efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+" au FileType python setl makeprg=pylint\ --reports=n\ --output-format=parseable\ %:p
+" au FileType python setl efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+
+autocmd FileType python set makeprg=pylint\ --reports=n\ --msg-template=\"{path}:{line}:\ {msg_id}\ {symbol},\ {obj}\ {msg}\"\ %:p
+autocmd FileType python set errorformat=%f:%l:\ %m

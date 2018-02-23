@@ -1,5 +1,7 @@
 " Author: Jie Mei
 " Since:  2016.05.16
+"
+" TODO: Allow pre-filetype settings, (e.g. see ftplugin/tex.vim)
 
 " The absolute pathname to this vimrc file.
 let g:vimrc_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
