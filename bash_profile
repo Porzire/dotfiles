@@ -2,16 +2,8 @@ if [ -f ~/.bashrc ]; then
   source ~/.bashrc
 fi
 
-# Color the terminal print.
 export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
-
-if [ -d ~/torch ]; then
-  if ! type 'th' > /dev/null; then
-    # Auto-activate torch
-    . ~/torch/install/bin/torch-activate
-  fi
-fi
+export LS_COLORS=GxFxCxDxBxegedabagaced
 
 if [ -d ~/.linuxbrew ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
@@ -21,8 +13,8 @@ if [ -d ~/.linuxbrew ]; then
   INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 fi
 
-if [ -d ~/miniconda3 ]; then
-  PATH="$HOME/miniconda3/bin:$PATH"
+if [ -d ~/.virtualenv ]; then
+  PATH="$HOME/.virtualenv/bin:$PATH"
 fi
 
 if [ "$(uname)" == 'Linux' ]; then
