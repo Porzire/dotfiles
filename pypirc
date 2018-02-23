@@ -1,0 +1,13 @@
+[distutils]
+index-servers =
+  pypi
+
+[pypi]
+repository=https://pypi.python.org/pypi
+username=jmei
+password=Mj910525
+
+[pypitest]
+repository=https://testpypi.python.org/pypi
+username=jmei
+password=Mj910525

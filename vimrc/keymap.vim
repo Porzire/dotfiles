@@ -9,7 +9,19 @@ map <d-k> 5k
 map <c-k> 5k
 
 " Switch folding status with space.
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR>
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc':'zo')<CR><C-L>
+" nnoremap <space> :call ToggleFold()<CR>
+" func! ToggleFold()
+"   if foldclosed(line('.')) >= 0
+"     foldopen
+"   else
+"     try
+"       foldclose
+"       redraw!
+"     catch
+"     endtry
+"   endif
+" endfunc
 
 " Highlight the current selection.
 vnoremap // y/<C-R>"<CR>
@@ -18,9 +30,16 @@ vnoremap // y/<C-R>"<CR>
 xnoremap p pgvy
 
 " Run program.
-map <d-0> :call RunProgram()<CR>
+map <leader>r :call RunProgram()<CR>
 function! RunProgram()
-  if &filetype == 'c'
+  if filereadable('Makefile')
+    if exists(':Make')
+      " asyn build command implemented in 'vim-dispatch' plugin
+      Make!
+    else
+      make
+    endif
+  elseif &filetype == 'c'
     if g:is_mswin
       exec "! %<.exe"
     else
