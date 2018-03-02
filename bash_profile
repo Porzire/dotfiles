@@ -3,13 +3,17 @@ if [ -f ~/.bashrc ]; then
 fi
 
 export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+export LS_COLORS=GxFxCxDxBxegedabagaced
 
 if [ -d "$HOME/.linuxbrew" ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
   MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
   INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
+
+if [ -d ~/.virtualenv ]; then
+  PATH="$HOME/.virtualenv/bin:$PATH"
 fi
 
 if [ -d "$HOME/.conda" ]; then
