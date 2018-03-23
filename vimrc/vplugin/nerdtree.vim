@@ -9,7 +9,7 @@ endif
 map <c-o> :NERDTreeToggle<CR>
 imap <c-o> <ESC>:NERDTreeToggle<CR>
 
-let NERDTreeIgnore=['\.pyc']
+let NERDTreeIgnore=['\.pyc', '__pycache__$']
 let g:NERDTreeWinSize = 31
 let g:NERDTreeForceMac = 1
 
