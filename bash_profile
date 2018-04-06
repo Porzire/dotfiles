@@ -14,6 +14,9 @@ fi
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Custom colors
+export LS_COLORS=$LS_COLORS:'di=1;33:ln=90'
+
 if [ -d "$HOME/.linuxbrew" ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
