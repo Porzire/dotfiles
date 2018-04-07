@@ -7,6 +7,7 @@ endif
 
 let g:indentLine_char = '┆'
 let g:indentLine_color_gui = '#928374'
+let g:indentLine_color_term = 238
 let g:indentLine_concealcursor = ''
 let g:indentLine_maxLines = 2
 let g:indentLine_indentLevel = 2
