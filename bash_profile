@@ -3,10 +3,11 @@ if [ -f ~/.bashrc ]; then
 fi
 
 export PS1="${debian_chroot:+($debian_chroot)}"`
-          `"\[\033[01;90m\]\w"`     # PWD
+          `"\[\033[01;32m\]\h"`  # UID@SERVER
+          `"\[\033[00m\]:"`
+          `"\[\033[01;90m\]\w"`  # PWD
           `"\[\033[00m\] \$ "
-          #`"\[\033[01;32m\]\u@\h"` # UID@SERVER
-          #`"\[\033[00m\]:"`
+          # `"\[\033[01;32m\]\u@\h"` # UID@SERVER
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
