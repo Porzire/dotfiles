@@ -34,6 +34,7 @@ endif
 
 " Disable error beep and flash
 set noerrorbells
+set vb t_vb=
 
 if g:is_mac
   set visualbell  " error bell when click ESC in normal mode. (default close)
