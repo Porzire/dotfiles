@@ -56,13 +56,6 @@ export MANPATH
 export PATH
 export PYTHONPATH
 
-# Run tiddlywiki
-if [ -d "$HOME/Dropbox/wiki" ]; then
-  if ! pgrep node &>/dev/null; then
-    nohup tiddlywiki "$HOME/Dropbox/wiki" --server > /dev/null &
-  fi
-fi
-
 if [ -f "$HOME/.bash_local" ]; then
   source "$HOME/.bash_local"
 fi
