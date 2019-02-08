@@ -63,6 +63,14 @@ export MANPATH
 export PATH
 export PYTHONPATH
 
+# Run tiddlywiki
+if [ -d "$HOME/Google Drive/Wiki/" ]; then
+  if ! pgrep node &>/dev/null; then
+    nohup tiddlywiki "$HOME/Google Drive/Wiki/wiki" --server 8080 $:/core/save/all text/plain text/html "Jie Mei" "" 0.0.0.0 > /dev/null &
+    echo "Start runing tiddlywiki"
+  fi
+fi
+
 if [ -f "$HOME/.bash_local" ]; then
   source "$HOME/.bash_local"
 fi
