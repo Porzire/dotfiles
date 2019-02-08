@@ -1,0 +1,59 @@
+" Author: Jie Mei
+" Since:  2016.05.16
+"
+" TODO: Allow pre-filetype settings, (e.g. see ftplugin/tex.vim)
+
+" The absolute pathname to this vimrc file.
+let g:vimrc_path = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
+" Setup platform detection variables.
+let g:is_mswin = has('win16') || has('win32') || has('win32unix') || has('win64') || has('win95')
+let g:is_mac = has('mac') || has('') || has('win32unix')
+let g:is_dos = has('dos16') || has('dos32')
+
+function! s:source(regex)
+  """ Source setting files in the vimrc path.
+  """
+  for map in split(glob(g:vimrc_path . '/' . a:regex), '\n')
+    exec 'source ' . map
+  endfor
+endfunction
+
+set nocompatible
+
+" Load plugins.
+filetype off
+set rtp+=~/AppData/Local/nvim/bundle/Vundle.vim
+let g:check_vundle_plugin = 1
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+call s:source('/vplugin/*.vim')
+unlet g:check_vundle_plugin
+call vundle#end() 
+filetype plugin indent on
+
+" Set up general editor settings.
+call s:source('general.vim')
+call s:source('util.vim')
+call s:source('ui.vim')
+call s:source('keymap.vim')
+
+" Reload plugin settings to override the basic settings.
+call s:source('/vplugin/*.vim')
+
+" Load commands.
+call s:source('command/*.vim')
+
+" Load auto commands.
+if has('autocmd')
+  call s:source('autocmd/*.vim')
+endif
+
+" Load specific settings for different file types.
+if has('autocmd')
+  " Note: The settings in 'ftplugin' should be defined for the local buffer
+  " using `setlocal`. One file may be assign filetype multiply times during
+  " loading. Therefore, we may want some settings be overrided in the final
+  " filetype.
+  autocmd! FileType * call s:source('ftplugin/' . &ft . '.vim')
+endif
