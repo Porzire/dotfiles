@@ -24,6 +24,13 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 # Custom colors
 export LS_COLORS=$LS_COLORS:'di=1;33:ln=90'
 
+if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+  PATH="/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH"
+  LIBRARY_PATH="/home/linuxbrew/.linuxbrew/lib:$LIBRARY_PATH"
+  MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+  INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+fi
+
 if [ -d "$HOME/.linuxbrew" ]; then
   PATH="$HOME/.linuxbrew/bin:$HOME/.linuxbrew/sbin:$PATH"
   LIBRARY_PATH="$HOME/.linuxbrew/lib:$LIBRARY_PATH"
