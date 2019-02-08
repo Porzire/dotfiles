@@ -11,7 +11,7 @@ endif
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_loc_list_height = 3 " default: 10
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers = ['mypy']  " slow with ['pylint', 'mypy']
+let g:syntastic_python_checkers = []  " slow with ['pylint', 'mypy']
 " mypy settings
 let g:syntastic_python_mypy_args = '--ignore-missing-imports'
 
