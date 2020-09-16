@@ -15,7 +15,7 @@ vim: $(PREFIX)/.vimrc $(PREFIX)/.editorconfig $(PREFIX)/.config/powerline $(PREF
 	@if [ ! -e $(PREFIX)/.vim/after/.vimrc-after ]; then \
 		echo "$(PREFIX)/.vim/after/.vimrc-after <- $(shell pwd)/vimrc/after.vim"; \
 		mkdir -p $(PREFIX)/.vim/after; \
-		ln -s $(shell pwd)/vimrc/after.vim $(PREFIX)/.vim/after/.vimrc-after; \
+		ln -fs $(shell pwd)/vimrc/after.vim $(PREFIX)/.vim/after/.vimrc-after; \
 	fi
 	@if [ ! -e $(PREFIX)/.vim/bundle/Vundle.vim ]; then \
 		git clone https://github.com/VundleVim/Vundle.vim.git $(PREFIX)/.vim/bundle/Vundle.vim; \
@@ -43,7 +43,7 @@ brew:
 $(PREFIX)/.config/%: config/%
 	@echo "$@ <- $(shell pwd)/$<"
 	@mkdir -p $(PREFIX)/.config
-	@ln -Fs $(shell pwd)/$< $@
+	@ln -Ffs $(shell pwd)/$< $@
 
 # Link ./<dotfile> to $(PREFIX)/.<dotfile>. If ./<dotfile> is expended to be a
 # folder, link ./<dotfile>/<dotfile> instead.
@@ -56,10 +56,10 @@ $(PREFIX)/.%: %
 		fi; \
 		if [ -d $(shell pwd)/$* ]; then \
 			echo "$@ <- $(shell pwd)/$*/$*"; \
-			ln -s $(shell pwd)/$*/$* $@; \
+			ln -fs $(shell pwd)/$*/$* $@; \
 		else \
 			echo "$@ <- $(shell pwd)/$<"; \
-			ln -s $(shell pwd)/$* $@; \
+			ln -fs $(shell pwd)/$* $@; \
 		fi \
 	fi
 
